@@ -53,7 +53,7 @@ jobs:
     needs: [npm_discover]
     strategy:
       matrix:
-        package: ${{ fromJson(needs.discover_projects.outputs.packages) }}
+        package: ${{ fromJson(needs.npm_discover.outputs.packages) }}
 
     steps:
     - name: Checkout current repo state
