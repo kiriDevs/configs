@@ -1,0 +1,74 @@
+name: Publish to NPM
+on:
+  push:
+    branches:
+    - "main"
+
+jobs:
+  npm_discover:
+    name: Discover NPM projects
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout current repo state
+      uses: actions/checkout@v3
+
+    - name: Discover NPM projects via package.json
+      run: |
+        # Make sure find results are \n seperated so it handles spaces properly
+        old_IFS="$IFS"
+        IFS=$'\n'
+
+        # Discover, encode, save all folders with package.json
+        pjsons=$(find ./* -mindepth 1 -maxdepth 1 -type f -name package.json)
+        packsarr=$(
+          for packagejson in $pjsons; do
+            packpath="$(dirname "$packagejson")"
+            packname="$(basename "$packpath")"
+
+            # Ignore private packages
+            privatestate=`jq .[\"private\"] < ${packagejson}`
+            if [ "${privatestate}" = "true" ]; then
+              echo "::warning file=${packagejson},"\
+              "title=\"Ignoring private package ${packname}\""\
+              "::\`private\` is set to \`true\` in \`package.json\`" >&2
+              continue;
+            fi
+
+            # If 'continue' is not hit, we will be publishing this package
+            echo "$packname"
+          done | jq -Rnc '[inputs]' # Transform package names into JSON
+        )
+
+        # Restore IFS since manual changes aren't required anymore
+        IFS="$old_IFS"
+
+        # Export found packages as GHAction Job Output
+        echo "packages=${packsarr}" #>> $GITHUB_OUTPUT
+
+  npm_publish:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+
+    needs: [npm_discover]
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.discover_projects.outputs.packages) }}
+
+    steps:
+    - name: Checkout current repo state
+      uses: actions/checkout@v3
+
+    - name: Publish ${{ matrix.package }} to NPM
+      id: publish
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        package: ${{ matrix.package }}/package.json
+        token: ${{ secrets.NPM_AUTOPUBLISH_TOKEN }}
+
+    - name: Create GHActions Notice
+      if: steps.publish.outputs.type != "none"
+      run: |
+        echo "::notice title=\"Published ${{ matrix.package }} to NPM!::"\
+        "${{ matrix.package }}@${{ steps.publish.outputs.version }}"\
+        "(\`${{ steps.publish.outputs.tag }}\`) was published on NPM!"
