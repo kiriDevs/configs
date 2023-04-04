@@ -67,7 +67,7 @@ jobs:
         token: ${{ secrets.NPM_AUTOPUBLISH_TOKEN }}
 
     - name: Create GHActions Notice
-      if: steps.publish.outputs.type != "none"
+      if: steps.publish.outputs.type != 'none'
       run: |
         echo "::notice title=\"Published ${{ matrix.package }} to NPM!::"\
         "${{ matrix.package }}@${{ steps.publish.outputs.version }}"\
