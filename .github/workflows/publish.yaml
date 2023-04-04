@@ -44,7 +44,7 @@ jobs:
         IFS="$old_IFS"
 
         # Export found packages as GHAction Job Output
-        echo "packages=${packsarr}" #>> $GITHUB_OUTPUT
+        echo "packages=${packsarr}" >> $GITHUB_OUTPUT
 
   npm_publish:
     name: Publish to NPM
