@@ -9,11 +9,15 @@ jobs:
     name: Discover NPM projects
     runs-on: ubuntu-latest
 
+    outputs:
+      packages: ${{ steps.discover.outputs.packages }}
+
     steps:
     - name: Checkout current repo state
       uses: actions/checkout@v3
 
     - name: Discover NPM projects via package.json
+      id: discover
       run: |
         # Make sure find results are \n seperated so it handles spaces properly
         old_IFS="$IFS"
