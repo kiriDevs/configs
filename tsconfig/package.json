@@ -1,0 +1,16 @@
+{
+  "name": "@kiridevs_configs/tsconfig",
+  "version": "1.0.0",
+  "description": "kiriDevs' base TSConfig (mainly made for Node18)",
+  "keywords": [
+    "tsconfig",
+    "node18"
+  ],
+  "author": "kiriDevs",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiriDevs/configs",
+    "directory": "tsconfig"
+  }
+}
