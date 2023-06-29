@@ -69,6 +69,7 @@ jobs:
       with:
         package: ${{ matrix.package }}/package.json
         token: ${{ secrets.NPM_AUTOPUBLISH_TOKEN }}
+        access: public # Defaults to 'restricted' on scoped packages
 
     - name: Create GHActions Notice
       if: steps.publish.outputs.type != 'none'
