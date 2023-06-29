@@ -76,6 +76,6 @@ jobs:
     - name: Create GHActions Notice
       if: steps.publish.outputs.type
       run: |
-        echo "::notice title=\"Published ${{ matrix.package }} to NPM!::"\
+        echo "::notice title=Published ${{ matrix.package }} to NPM!::"\
         "${{ matrix.package }}@${{ steps.publish.outputs.version }} "\
-        "(\`${{ steps.publish.outputs.tag }}\`) was published on NPM!"
+        "(${{ steps.publish.outputs.tag }}) was published on NPM!"
