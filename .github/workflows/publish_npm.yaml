@@ -36,8 +36,8 @@ jobs:
             privatestate=`jq .[\"private\"] < ${packagejson}`
             if [ "${privatestate}" = "true" ]; then
               echo "::warning file=${packagejson},"\
-              "title=\"Ignoring private package ${packname}\""\
-              "::\`private\` is set to \`true\` in \`package.json\`" >&2
+              "title=Ignoring private package ${packname}"\
+              "::private is set to true in package.json" >&2
               continue;
             fi
 
