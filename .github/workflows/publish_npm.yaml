@@ -67,15 +67,15 @@ jobs:
 
     - name: Publish ${{ matrix.package }} to NPM
       id: publish
-      uses: JS-DevTools/npm-publish@v1
+      uses: JS-DevTools/npm-publish@v2
       with:
         package: ${{ matrix.package }}/package.json
         token: ${{ secrets.NPM_AUTOPUBLISH_TOKEN }}
         access: public # Defaults to 'restricted' on scoped packages
 
     - name: Create GHActions Notice
-      if: steps.publish.outputs.type != 'none'
+      if: steps.publish.outputs.type
       run: |
         echo "::notice title=\"Published ${{ matrix.package }} to NPM!::"\
-        "${{ matrix.package }}@${{ steps.publish.outputs.version }}"\
+        "${{ matrix.package }}@${{ steps.publish.outputs.version }} "\
         "(\`${{ steps.publish.outputs.tag }}\`) was published on NPM!"
