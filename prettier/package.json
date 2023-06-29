@@ -1,0 +1,19 @@
+{
+  "name": "@kiridevs_configs/prettier",
+  "version": "1.0.0",
+  "description": "kiriDevs' base prettier config (mainly made for Node18)",
+  "keywords": [
+    "prettier",
+    "node18"
+  ],
+  "author": "kiriDevs",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiriDevs/configs",
+    "directory": "prettier"
+  },
+  "peerDependencies": {
+    "prettier": "^2.8.0"
+  }
+}
