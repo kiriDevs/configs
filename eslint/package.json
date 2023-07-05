@@ -1,0 +1,40 @@
+{
+  "name": "@kiridevs_configs/eslint",
+  "version": "1.0.0",
+  "description": "kiriDevs' default ESLint config (mainly made for Node18, using the new Flat Config format)",
+  "type": "module",
+  "main": "eslint.config.js",
+  "keywords": [
+    "eslint",
+    "node18",
+    "ecma2022"
+  ],
+  "author": "kiriDevs",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiriDevs/configs",
+    "directory": "eslint"
+  },
+  "peerDependencies": {
+    "eslint": "^8.21.0 || ^9.0.0",
+    "prettier": "^2.8.0 || ^3.0.0",
+    "typescript": "^4.8.0 || ^5.0.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2"
+  },
+  "dependencies": {
+    "globals": "^13.20.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0 || ^9.0.0",
+    "prettier": "^2.8.0 || ^3.0.0",
+    "typescript": "^4.8.0 || ^5.0.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2"
+  }
+}
