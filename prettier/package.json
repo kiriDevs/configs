@@ -1,6 +1,7 @@
 {
   "name": "@kiridevs_configs/prettier",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "main": "prettier.config.js",
   "description": "kiriDevs' base prettier config (mainly made for Node18)",
   "keywords": [
     "prettier",
