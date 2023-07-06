@@ -18,6 +18,7 @@ export default [
   // Personal base config
   {
     files: ["src/**/*.{js,jsx,ts,tsx,json}", "*.config.js"],
+    ignores: ["prettier.config.js"],
     languageOptions: {
       sourceType: "module",
       ecmaVersion: 2022,
