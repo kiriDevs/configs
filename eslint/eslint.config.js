@@ -20,13 +20,13 @@ export default [
       }
     }
   },
-  // TypeScript config
+  // Custom TypeScript config
   {
     files: ["src/**/*.{ts,tsx}"],
     plugins: { typescript: pluginTypescript },
     languageOptions: { parser: parserTypescript }
   },
-  // Base Config
+  // Personal base config
   {
     files: ["src/**/*.{js,jsx,ts,tsx,json}", "*.config.js"],
     languageOptions: {
@@ -49,5 +49,19 @@ export default [
         }
       ]
     }
+  },
+  // @typescript-eslint recommended configs
+  {
+    files: ["src/**/*.ts", "src/**/*.tsx"],
+    plugins: { "@typescript-eslint": pluginTypescript },
+    rules: pluginTypescript.configs["eslint-recommended"].rules
+    // This preset-config disables all vanilla ESLint rules that are superseded by @typescript-eslint or TS itself.
+    // (Also enables a few rules that "make sense due to TS's typechecking / transpilation.")
+  },
+  {
+    files: ["src/**/*.ts", "src/**/*.tsx"],
+    plugins: { "@typescript-eslint": pluginTypescript },
+    rules: pluginTypescript.configs["recommended-requiring-type-checking"].rules
+    // Basically @typescript-eslint/eslint-plugin:recommended, but without rules replaced by TS itself
   }
 ];
