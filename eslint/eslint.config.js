@@ -1,25 +1,14 @@
 import parserTypescript from "@typescript-eslint/parser";
 
-import pluginReact from "eslint-plugin-react";
 import pluginTypescript from "@typescript-eslint/eslint-plugin";
 import pluginPrettier from "eslint-plugin-prettier";
+
+import configReact from "eslint-plugin-react/configs/recommended.js";
 
 import globals from "globals";
 
 export default [
-  // JSX (React) config
-  {
-    files: ["src/**/*.{jsx,tsx}"],
-    plugins: { react: pluginReact },
-    languageOptions: {
-      parser: parserTypescript,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        }
-      }
-    }
-  },
+  configReact, // JSX (React) config
   // Custom TypeScript config
   {
     files: ["src/**/*.{ts,tsx}"],
