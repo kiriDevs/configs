@@ -9,7 +9,7 @@ import globals from "globals";
 
 export default [
   configReact, // JSX (React) config
-  // Custom TypeScript config
+  // Personal TypeScript config
   {
     files: ["src/**/*.{ts,tsx}"],
     plugins: { typescript: pluginTypescript },
