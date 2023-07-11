@@ -1,6 +1,6 @@
 {
   "name": "@kiridevs_configs/eslint",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "kiriDevs' default ESLint config (mainly made for Node18, using the new Flat Config format)",
   "type": "module",
   "main": "eslint.config.js",
